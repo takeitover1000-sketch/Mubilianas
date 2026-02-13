@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mubilia Anas | Luxury Collection</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#C5A059; --gold-light:#e0c07a; --gold-dark:#a07830;
+  --navy:#0a0f1e; --navy-mid:#111827; --navy-light:#1a2440;
+  --navy-card:#131c32; --text:#f0e6d0; --text-muted:#8a9bb5;
+  --border:rgba(197,160,89,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
+body{background:var(--navy);color:var(--text);overflow-x:hidden;}
+
+/* GREETING BANNER */
+.greeting-banner{
+  background:linear-gradient(135deg,#060c18,#0d1628,#060c18);
+  border-bottom:1px solid var(--border);
+  min-height:78px; display:flex;
+  align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.greeting-banner::before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at center,rgba(197,160,89,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.g-wrap{position:relative;height:78px;width:100%;display:flex;align-items:center;justify-content:center;}
+.g-text{
+  font-family:'Amiri',serif,Arial;
+  font-size:28px; color:var(--gold);
+  text-shadow:0 0 22px rgba(197,160,89,.65);
+  direction:rtl; position:absolute;
+  opacity:0; transform:translateY(24px);
+  pointer-events:none; white-space:nowrap;
+}
+@keyframes gIn  {from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gOut {from{opacity:1;transform:translateY(0)}    to{opacity:0;transform:translateY(-24px)}}
+.g-in   {animation:gIn  .65s ease forwards;}
+.g-out  {animation:gOut .55s ease forwards;}
+.g-stay {opacity:1!important;transform:translateY(0)!important;}
+
+/* HEADER */
+header{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 5%; background:var(--navy-mid);
+  border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:1000;
+  box-shadow:0 2px 20px rgba(0,0,0,.4);
+}
+.logo-img{
+  width:50px;height:50px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--gold);box-shadow:0 0 12px rgba(197,160,89,.35);
+}
+.brand-name{
+  font-size:22px;font-weight:700;color:var(--gold);
+  letter-spacing:2px;text-shadow:0 0 18px rgba(197,160,89,.3);
+}
+.whatsapp-btn{
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;padding:10px 20px;border-radius:5px;
+  text-decoration:none;font-weight:700;
+  display:flex;align-items:center;gap:8px;transition:.3s;
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 4px 15px rgba(37,211,102,.25);
+}
+.whatsapp-btn:hover{background:linear-gradient(135deg,#128C7E,#075E54);transform:scale(1.05);}
+
+/* HERO */
+.hero{width:100%;height:70vh;background:#000;overflow:hidden;position:relative;}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(10,15,30,.2) 0%,rgba(10,15,30,.5) 100%);
+  pointer-events:none;
+}
+.hero video{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* SECTION TITLE */
+.section-title{text-align:center;padding:60px 20px 20px;position:relative;}
+.section-title h2{
+  font-size:36px;color:var(--gold);
+  text-transform:uppercase;letter-spacing:6px;
+  text-shadow:0 0 30px rgba(197,160,89,.4);
+}
+.section-title .arabic-sub{
+  font-family:'Amiri',serif;font-size:22px;
+  color:var(--text-muted);direction:rtl;margin-top:8px;
+}
+.section-title::after{
+  content:'';display:block;width:80px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:16px auto 0;
+}
+
+/* GRID - Updated for larger cards like Daraz */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+  max-width:1400px;
+  margin:0 auto 80px;
+  padding:0 20px;
+}
+
+/* CARD */
+.card{
+  background:var(--navy-card);border:1px solid var(--border);
+  transition:.4s;display:flex;flex-direction:column;
+  border-radius:2px;overflow:hidden;
+}
+.card:hover{
+  border-color:var(--gold);transform:translateY(-10px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px rgba(197,160,89,.12);
+}
+
+/* IMAGE CAROUSEL CONTAINER */
+.img-container{
+  position:relative;
+  overflow:hidden;
+  height:350px;
+  background:var(--navy-light);
+}
+.carousel-wrapper{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.carousel-images{
+  display:flex;
+  width:100%;
+  height:100%;
+  position:relative;
+}
+.carousel-images img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  flex-shrink:0;
+  transition:transform .5s;
+  cursor:zoom-in;
+  position:absolute;
+  left:0;
+  top:0;
+  opacity:0;
+  transition:opacity .5s;
+}
+.carousel-images img.active{
+  opacity:1;
+}
+.carousel-images img:hover{
+  filter:brightness(.85);
+}
+
+/* Carousel Navigation Arrows */
+.carousel-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(10,15,30,.8);
+  border:1px solid var(--gold);
+  color:var(--gold);
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.3s;
+  z-index:10;
+  opacity:0;
+}
+.img-container:hover .carousel-nav{
+  opacity:1;
+}
+.carousel-nav:hover{
+  background:var(--gold);
+  color:var(--navy);
+  transform:translateY(-50%) scale(1.1);
+}
+.carousel-nav.prev{left:10px;}
+.carousel-nav.next{right:10px;}
+
+/* DETAILS */
+.details{padding:20px;text-align:center;flex-grow:1;background:var(--navy-card);}
+.name{font-size:16px;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;color:var(--text);}
+.name-ar{font-family:'Amiri',serif;font-size:15px;color:var(--text-muted);direction:rtl;margin-bottom:12px;}
+.description{font-size:12px;color:var(--text-muted);margin-bottom:5px;line-height:1.6;}
+.description-ar{font-family:'Amiri',serif;font-size:14px;color:var(--text-muted);direction:rtl;margin-bottom:14px;line-height:1.7;}
+.price{
+  font-size:22px;color:var(--gold);font-weight:700;margin-bottom:4px;
+  text-shadow:0 0 20px rgba(197,160,89,.35);
+  display:flex;align-items:center;justify-content:center;gap:5px;
+}
+.sar-symbol{font-family:'Arial',sans-serif;font-size:20px;}
+.price-ar{font-family:'Amiri',serif;font-size:13px;color:var(--text-muted);margin-bottom:16px;direction:rtl;}
+
+/* SHOP NOW BUTTON */
+.shop-now{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--navy);padding:12px 28px;border-radius:2px;
+  text-decoration:none;font-weight:700;
+  transition:.3s;position:relative;overflow:hidden;
+  border:1px solid var(--gold-light);
+}
+.shop-now::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold-dark));
+  opacity:0;transition:.3s;
+}
+.shop-now:hover::before{opacity:1;}
+.shop-now:hover{transform:scale(1.05);box-shadow:0 8px 25px rgba(197,160,89,.4);}
+.btn-en,.btn-ar{position:relative;z-index:1;}
+.btn-en{display:block;}
+.btn-ar{display:none;font-family:'Amiri',serif;font-size:15px;}
+
+/* LIGHTBOX WITH ZOOM AND NAVIGATION */
+.lightbox{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.95);
+  display:flex;align-items:center;justify-content:center;
+  z-index:10000;opacity:0;pointer-events:none;
+  transition:.4s;
+}
+.lightbox.active{opacity:1;pointer-events:all;}
+.lightbox-content{
+  position:relative;
+  max-width:90%;
+  max-height:90%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.lightbox img{
+  max-width:100%;
+  max-height:90vh;
+  object-fit:contain;
+  border:2px solid var(--gold);
+  box-shadow:0 0 50px rgba(197,160,89,.3);
+}
+
+/* Lightbox Close Button */
+.lightbox-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:50px;
+  height:50px;
+  background:var(--gold);
+  color:var(--navy);
+  border:none;
+  border-radius:50%;
+  font-size:28px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.3s;
+  z-index:10001;
+  box-shadow:0 4px 15px rgba(197,160,89,.4);
+}
+.lightbox-close:hover{
+  background:var(--gold-light);
+  transform:rotate(90deg) scale(1.1);
+}
+
+/* Lightbox Navigation Arrows */
+.lightbox-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(197,160,89,.9);
+  color:var(--navy);
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.3s;
+  border:2px solid var(--gold-light);
+  font-size:24px;
+}
+.lightbox-nav:hover{
+  background:var(--gold-light);
+  transform:translateY(-50%) scale(1.15);
+}
+.lightbox-nav.prev{left:30px;}
+.lightbox-nav.next{right:30px;}
+
+/* Loading Spinner */
+.loading{
+  text-align:center;
+  padding:60px 20px;
+  color:var(--gold);
+  font-size:18px;
+}
+.spinner{
+  border:4px solid var(--border);
+  border-top:4px solid var(--gold);
+  border-radius:50%;
+  width:50px;
+  height:50px;
+  animation:spin 1s linear infinite;
+  margin:0 auto 20px;
+}
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px;}
+  .img-container{height:250px;}
+  .details{padding:15px;}
+  .name{font-size:14px;}
+  .name-ar{font-size:13px;}
+  .price{font-size:18px;}
+  .shop-now{padding:10px 20px;font-size:13px;}
+  .lightbox-nav{width:50px;height:50px;font-size:20px;}
+  .lightbox-nav.prev{left:10px;}
+  .lightbox-nav.next{right:10px;}
+}
+
+@media(min-width:769px) and (max-width:1024px){
+  .grid{grid-template-columns:repeat(3,1fr);}
+}
+
+@media(min-width:1025px){
+  .grid{grid-template-columns:repeat(4,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- GREETING BANNER -->
+<div class="greeting-banner">
+  <div class="g-wrap">
+    <div class="g-text" id="g1">السلام عليكم ورحمة الله وبركاته</div>
+    <div class="g-text" id="g2">مرحبا بكم في عالم الفخامة والراحة</div>
+    <div class="g-text" id="g3">Mubilia Anas - أناقة معاد تعريفها</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div style="display:flex;align-items:center;gap:15px;">
+    <img src="logo.jpg" alt="Mubilia Anas Logo" class="logo-img">
+    <div class="brand-name">MUBILIA ANAS</div>
+  </div>
+  <a href="https://wa.me/966554326366" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+    <span>CONTACT</span>
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <video autoplay loop muted playsinline>
+    <source src="0211.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="section-title">
+  <h2>OUR LUXURY COLLECTION</h2>
+  <div class="arabic-sub">مجموعتنا الفاخرة</div>
+</section>
+
+<!-- Loading Indicator -->
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+  <div>Loading products...</div>
+</div>
+
+<!-- Products Grid -->
+<div class="grid" id="products-grid"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <div class="lightbox-nav prev" onclick="navigateLightbox(-1)">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <div class="lightbox-content">
+    <img id="zoom-img" src="" alt="Product Image">
+  </div>
+  <div class="lightbox-nav next" onclick="navigateLightbox(1)">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+</div>
+
+<script>
+// GREETING ANIMATION
+var msgs = ['g1','g2','g3'];
+var cur = 0;
+
+function nextGreet(){
+  if(cur >= msgs.length) return;
+  var el = document.getElementById(msgs[cur]);
+  el.classList.remove('g-out','g-stay');
+  el.classList.add('g-in');
+  setTimeout(function(){
+    el.classList.remove('g-in');
+    el.classList.add('g-stay');
+    setTimeout(function(){
+      if(cur < msgs.length-1){
+        el.classList.remove('g-stay');
+        el.classList.add('g-out');
+        cur++;
+        setTimeout(nextGreet,600);
+      }
+    },2500);
+  },10);
+}
+nextGreet();
+
+// GOOGLE SHEETS DATA
+const SHEET_API = 'https://api.steinhq.com/v1/storages/698d6b09affba40a624c86ab';
+let productsData = [];
+let currentLightboxImages = [];
+let currentLightboxIndex = 0;
+
+// Carousel intervals storage
+const carouselIntervals = {};
+
+// Fetch products from Google Sheets
+async function fetchProducts() {
+  try {
+    const response = await fetch(`${SHEET_API}/Sheet1`);
+    const data = await response.json();
+    
+    // Filter out empty rows
+    productsData = data.filter(row => row.name && row.name.trim() !== '');
+    
+    displayProducts(productsData);
+    document.getElementById('loading').style.display = 'none';
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    document.getElementById('loading').innerHTML = '<div style="color:var(--text-muted);">Failed to load products. Please refresh the page.</div>';
+  }
+}
+
+// Display products
+function displayProducts(products) {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = '';
+  
+  products.forEach((product, index) => {
+    // Parse images (comma-separated URLs)
+    const images = product.images ? product.images.split(',').map(img => img.trim()).filter(img => img) : [];
+    
+    if (images.length === 0) return; // Skip products without images
+    
+    const card = document.createElement('div');
+    card.className = 'card';
+    
+    // Create carousel HTML
+    let carouselHTML = '';
+    if (images.length > 1) {
+      carouselHTML = `
+        <div class="carousel-wrapper">
+          <div class="carousel-images" id="carousel-${index}">
+            ${images.map((img, i) => `<img src="${img}" alt="${product.name}" class="${i === 0 ? 'active' : ''}" onclick="openLightbox(${index}, ${i})">`).join('')}
+          </div>
+          <div class="carousel-nav prev" onclick="changeCarouselImage(${index}, -1)">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="carousel-nav next" onclick="changeCarouselImage(${index}, 1)">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      `;
+    } else {
+      carouselHTML = `
+        <img src="${images[0]}" alt="${product.name}" onclick="openLightbox(${index}, 0)" style="cursor:zoom-in;width:100%;height:100%;object-fit:cover;">
+      `;
+    }
+    
+    card.innerHTML = `
+      <div class="img-container">
+        ${carouselHTML}
+      </div>
+      <div class="details">
+        <div class="name">${product.name || ''}</div>
+        <div class="name-ar">${product.name_ar || ''}</div>
+        <p class="description">${product.description || ''}</p>
+        <p class="description-ar">${product.description_ar || ''}</p>
+        <div class="price">
+          <span class="sar-symbol">&#65020;</span>
+          <span>${product.price || ''}</span>
+        </div>
+        <div class="price-ar">ريال سعودي</div>
+        <a href="https://wa.me/966554326366?text=I want to order ${encodeURIComponent(product.name)} (${product.price} RIAL)" class="shop-now">
+          <span class="btn-en">SHOP NOW</span>
+          <span class="btn-ar">تسوق الآن</span>
+        </a>
+      </div>
+    `;
+    
+    grid.appendChild(card);
+    
+    // Start auto-carousel for multi-image products
+    if (images.length > 1) {
+      startCarousel(index, images.length);
+    }
+  });
+}
+
+// Carousel Auto-Play (4 seconds interval)
+function startCarousel(productIndex, imageCount) {
+  let currentIndex = 0;
+  
+  carouselIntervals[productIndex] = setInterval(() => {
+    currentIndex = (currentIndex + 1) % imageCount;
+    updateCarouselImage(productIndex, currentIndex);
+  }, 4000); // 4 seconds
+}
+
+// Change carousel image manually
+function changeCarouselImage(productIndex, direction) {
+  const carousel = document.getElementById(`carousel-${productIndex}`);
+  const images = carousel.querySelectorAll('img');
+  let currentIndex = 0;
+  
+  // Find current active image
+  images.forEach((img, i) => {
+    if (img.classList.contains('active')) {
+      currentIndex = i;
+    }
+  });
+  
+  // Calculate new index
+  let newIndex = (currentIndex + direction + images.length) % images.length;
+  
+  // Update display
+  updateCarouselImage(productIndex, newIndex);
+  
+  // Reset auto-play timer
+  clearInterval(carouselIntervals[productIndex]);
+  startCarousel(productIndex, images.length);
+}
+
+// Update carousel image
+function updateCarouselImage(productIndex, newIndex) {
+  const carousel = document.getElementById(`carousel-${productIndex}`);
+  const images = carousel.querySelectorAll('img');
+  
+  images.forEach((img, i) => {
+    img.classList.toggle('active', i === newIndex);
+  });
+}
+
+// LIGHTBOX FUNCTIONS
+function openLightbox(productIndex, imageIndex) {
+  const product = productsData[productIndex];
+  const images = product.images.split(',').map(img => img.trim()).filter(img => img);
+  
+  currentLightboxImages = images;
+  currentLightboxIndex = imageIndex;
+  
+  document.getElementById('zoom-img').src = images[imageIndex];
+  document.getElementById('lightbox').classList.add('active');
+  
+  // Pause all carousels when lightbox opens
+  Object.keys(carouselIntervals).forEach(key => {
+    clearInterval(carouselIntervals[key]);
+  });
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  
+  // Resume all carousels when lightbox closes
+  productsData.forEach((product, index) => {
+    const images = product.images ? product.images.split(',').map(img => img.trim()).filter(img => img) : [];
+    if (images.length > 1) {
+      startCarousel(index, images.length);
+    }
+  });
+}
+
+function navigateLightbox(direction) {
+  currentLightboxIndex = (currentLightboxIndex + direction + currentLightboxImages.length) % currentLightboxImages.length;
+  document.getElementById('zoom-img').src = currentLightboxImages[currentLightboxIndex];
+}
+
+// Close lightbox on background click
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeLightbox();
+  }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox.classList.contains('active')) {
+    if (e.key === 'ArrowLeft') {
+      navigateLightbox(-1);
+    } else if (e.key === 'ArrowRight') {
+      navigateLightbox(1);
+    } else if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  }
+});
+
+// Load products on page load
+fetchProducts();
+</script>
+
+</body>
+</html>
